@@ -40,6 +40,12 @@ class Task
      */
     private $isDone;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="creator", referencedColumnName="id")
+    */
+    private $creator;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -89,5 +95,13 @@ class Task
     public function toggle($flag)
     {
         $this->isDone = $flag;
+    }
+
+    public function setCreator($creator){
+        $this->creator = $creator;
+    }
+
+    public function getCreator($creator){
+        return $this->creator;
     }
 }
