@@ -101,7 +101,7 @@ class Task
         $this->creator = $creator;
     }
 
-    public function getCreator($creator){
+    public function getCreator(){
         return $this->creator;
     }
 }
