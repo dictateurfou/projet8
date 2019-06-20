@@ -80,7 +80,30 @@ class TaskControllerTest extends DataFixtureTestCase
     }
 
     public function testChangeStateTask(){
-    	
+    	$client = $this->logUser();
+    	$crawler = $client->request('GET','/tasks');
+    	$form = $crawler->selectButton('Marquer comme faite')->form();
+    	$crawler = $client->submit($form);
+
+    	$this->assertTrue(
+            $client->getResponse()->isRedirect('/tasks')
+        );
+        $crawler = $client->request('GET','/tasks');
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('.caption span.glyphicon-ok')->count()
+        );
+
+        $form = $crawler->selectButton('Marquer non terminée')->form();
+        $crawler = $client->submit($form);
+        $this->assertTrue(
+            $client->getResponse()->isRedirect('/tasks')
+        );
+        $crawler = $client->request('GET','/tasks');
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('strong:contains("Superbe !")')->count()
+        );
     }
 
     
