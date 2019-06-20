@@ -22,14 +22,6 @@ monolog:
             type:   console
             channels: ["!event", "!doctrine"]
 
-doctrine:
-    dbal:
-        driver:   "%test_database_driver%"
-        host:     "%test_database_host%"
-        port:     "%test_database_port%"
-        dbname:   "%test_database_name%"
-        user:     "%test_database_user%"
-        password: "%test_database_password%"
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:

@@ -61,6 +61,22 @@ class DataFixtureTestCase extends WebTestCase
         return self::$application;
     }
     
+    public function logUser(){
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'user',
+            'PHP_AUTH_PW'   => 'user',
+        ]);
+        return $client;
+    }
+    
+    public function logAdmin(){
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'admin',
+            'PHP_AUTH_PW'   => 'admin',
+        ]);
+        return $client;
+    }
+
 
  
     protected function tearDown()
