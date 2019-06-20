@@ -10,9 +10,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Entity\User;
-use AppBundle\Enitity\Task;
+use AppBundle\Entity\Task;
 
-class LoadUserData implements FixtureInterface, ContainerAwareInterface
+class LoadData implements FixtureInterface, ContainerAwareInterface
 {
     private $data = [
         [
@@ -28,6 +28,8 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             'roles' => ['ROLE_ADMIN']
         ],
     ];
+
+    private $users = [];
 
     private $container;
 
@@ -46,16 +48,30 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface
             $user->setRoles($value["roles"]);
             $user->setPassword($password);
             $em->persist($user);
+            $users = [];
+            $this->users[$key] = $user;
         }
         $em->flush();
-
+        
         $this->loadTask($em);
     }
 
     private function loadTask(ObjectManager $em){
+
         $i = 0;
         while($i < 20){
+            $task = new Task();
+            if($i > 10){
+                $task->setCreator($this->users[1]);
+            }
+            else{
+                $task->setCreator($this->users[0]);
+            }
+            $task->setTitle("mon titre ".$i);
+            $task->setContent("content ".$i);
+            $em->persist($task);
             $i++;
         }
+        $em->flush();
     }
 }

@@ -61,6 +61,7 @@ class DataFixtureTestCase extends WebTestCase
         return self::$application;
     }
     
+
  
     protected function tearDown()
     {
