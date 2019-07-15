@@ -1,5 +1,7 @@
 # installation
-1) configure you bdd in app/config/parameter.yml
+1) type : composer install
+
+2) configure you bdd in app/config/parameter.yml
 edit with you bdd info
 ```yml
 #this file is auto-generated during the composer install
@@ -22,6 +24,7 @@ parameters:
     test_database_user: root
     test_database_password: null
 ```
-2) open you console in root folder.
-3) type : composer install
+3) open you console in root folder.
 4) type : php bin/console doctrine:schema:update --force
+
+
