@@ -1,6 +1,6 @@
 <?php
  //tests/AppBundle/DataFixtures/DataFixtureTestCase.php
-namespace Tests\AppBundle\DataFixtures;
+namespace Tests\AppBundle;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -8,10 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\StringInput;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use AppBundle\DataFixtures\LoadUserData;
 
 
-class DataFixtureTestCase extends WebTestCase
+
+class TestUtils extends WebTestCase
 {
     /** @var  Application $application */
     protected static $application;

@@ -3,7 +3,6 @@
 namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use AppBundle\DataFixtures\LoadUserData;
 
 class DefaultControllerTest extends WebTestCase
 {

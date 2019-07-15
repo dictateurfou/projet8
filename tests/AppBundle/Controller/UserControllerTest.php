@@ -2,12 +2,11 @@
 
 namespace Tests\AppBundle\Controller;
 
-use Tests\AppBundle\DataFixtures\DataFixtureTestCase;
+use Tests\AppBundle\TestUtils;
 use AppBundle\Entity\User;
-use AppBundle\DataFixtures\LoadUserData;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserControllerTest extends DataFixtureTestCase
+class UserControllerTest extends TestUtils
 {
 
     /**

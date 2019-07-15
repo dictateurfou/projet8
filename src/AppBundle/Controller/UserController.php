@@ -13,7 +13,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users", name="user_list")
      */
-    public function listAction()
+    public function listUser()
     {
         return $this->render('user/list.html.twig', ['users' => $this->getDoctrine()->getRepository('AppBundle:User')->findAll()]);
     }
@@ -21,7 +21,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/create", name="user_create")
      */
-    public function createAction(Request $request)
+    public function createUser(Request $request)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -46,7 +46,7 @@ class UserController extends AbstractController
     /**
      * @Route("/users/{id}/edit", name="user_edit")
      */
-    public function editAction(User $user, Request $request)
+    public function editUser(User $user, Request $request)
     {
         $form = $this->createForm(UserType::class, $user);
 
